@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h> 
-#include <time.h> 
+#include <stdlib.h>
+#include <time.h>
 
 #include "door_struct.h"
 
@@ -9,10 +9,9 @@
 
 void initialize_doors(struct door* doors);
 
-int main()
-{
+int main() {
     struct door doors[DOORS_COUNT];
-    
+
     initialize_doors(doors);
     sort(doors);
     set(doors);
@@ -22,11 +21,10 @@ int main()
 // ATTENTION!!!
 // DO NOT CHANGE!
 void initialize_doors(struct door* doors) {
-    srand(time(0)); 
-    
+    srand(time(0));
+
     int seed = rand() % MAX_ID_SEED;
-    for (int i = 0; i < DOORS_COUNT; i++)
-    {
+    for (int i = 0; i < DOORS_COUNT; i++) {
         doors[i].id = (i + seed) % DOORS_COUNT;
         doors[i].status = rand() % 2;
     }
@@ -34,7 +32,7 @@ void initialize_doors(struct door* doors) {
 
 void sort(struct door* doors) {
     for (int i = 0; i < DOORS_COUNT; i++) {
-        for (int j = i+1; j < DOORS_COUNT; j++) {
+        for (int j = i + 1; j < DOORS_COUNT; j++) {
             if (doors[i].id > doors[j].id) {
                 struct door temp = doors[i];
                 doors[i] = doors[j];
